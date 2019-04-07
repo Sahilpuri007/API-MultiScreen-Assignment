@@ -11,19 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="@dimen/iv_padding">
+        android:padding="@dimen/iv_padding"
+        android:background="@color/colorPrimaryDark">
 
-        <TextView
-            android:layout_gravity="center"
-            android:id="@+id/tvPostId"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size"
-            android:textAlignment="center"
-            android:layout_weight="0.2"
-            android:textStyle="bold"
-            app:fontFamily="sans-serif-light"
-            />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,6 +29,7 @@
                 android:layout_margin="@dimen/margin"
                 android:textSize="@dimen/title_text_size"
                 android:textStyle="bold"
+                android:textColor="@color/colorWhite"
                 app:fontFamily="sans-serif-light" />
 
 
@@ -49,6 +40,7 @@
                 android:layout_margin="@dimen/margin"
                 android:textSize="@dimen/text_size"
                 android:textStyle="bold"
+                android:textColor="@color/colorWhite"
                 app:fontFamily="sans-serif-light"/>
 
         </LinearLayout>

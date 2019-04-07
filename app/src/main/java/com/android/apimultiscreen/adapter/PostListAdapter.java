@@ -17,11 +17,9 @@ import java.util.ArrayList;
 public class PostListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     private ArrayList<Post> postArrayList;
-    private RecyclerTouchListener mListener;
 
-    public PostListAdapter(ArrayList<Post> postArrayList, RecyclerTouchListener mListener) {
+    public PostListAdapter(ArrayList<Post> postArrayList) {
         this.postArrayList = postArrayList;
-        this.mListener = mListener;
     }
 
     @NonNull
@@ -35,16 +33,8 @@ public class PostListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder viewHolder, int i) {
         PostListAdapter.PostViewHolder postViewHolder = (PostListAdapter.PostViewHolder) viewHolder;
-        postViewHolder.tvId.setText(String.valueOf(postArrayList.get(i).getId()));
         postViewHolder.tvTitle.setText(postArrayList.get(i).getTitle());
         postViewHolder.tvBody.setText(postArrayList.get(i).getBody());
-
-        postViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mListener.onItemClick(viewHolder.getAdapterPosition());
-            }
-        });
     }
 
     @Override
@@ -53,11 +43,10 @@ public class PostListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     class PostViewHolder extends RecyclerView.ViewHolder {
-        TextView tvId,tvTitle,tvBody;
+        TextView tvTitle,tvBody;
 
         public PostViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvId = itemView.findViewById(R.id.tvPostId);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvBody = itemView.findViewById(R.id.tvBody);
         }

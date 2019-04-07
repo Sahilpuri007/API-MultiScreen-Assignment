@@ -5,7 +5,14 @@
     android:layout_height="match_parent"
     android:baselineAligned="false"
     android:orientation="vertical">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_above="@+id/btnShowPosts">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <ImageView
         android:id="@+id/ivUser"
         android:layout_width="@dimen/iv_size"
@@ -37,54 +44,57 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/ivUser">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
-        <TextView
-            android:id="@+id/tvIdShow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/margin"
-            android:textSize="@dimen/text_size"
-            android:textStyle="bold"
-            app:fontFamily="sans-serif-light" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/tvIdShow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin"
+                android:textSize="@dimen/text_size"
+                android:textStyle="bold"
+                app:fontFamily="sans-serif-light" />
 
-        <TextView
-            android:id="@+id/tvNameShow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/margin"
-            android:textSize="@dimen/text_size"
-            android:textStyle="bold"
-            app:fontFamily="sans-serif-light" />
+            <TextView
+                android:id="@+id/tvNameShow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin"
+                android:textSize="@dimen/text_size"
+                android:textStyle="bold"
+                app:fontFamily="sans-serif-light" />
 
-        <TextView
-            android:id="@+id/tvUserNameShow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/margin"
-            android:textSize="@dimen/text_size"
-            android:textStyle="bold"
-            app:fontFamily="sans-serif-light" />
+            <TextView
+                android:id="@+id/tvUserNameShow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin"
+                android:textSize="@dimen/text_size"
+                android:textStyle="bold"
+                app:fontFamily="sans-serif-light" />
 
-        <TextView
-            android:id="@+id/tvEmailShow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/margin"
-            android:textSize="@dimen/text_size"
-            android:textStyle="bold"
-            app:fontFamily="sans-serif-light" />
+            <TextView
+                android:id="@+id/tvEmailShow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin"
+                android:textSize="@dimen/text_size"
+                android:textStyle="bold"
+                app:fontFamily="sans-serif-light" />
 
 
-    </LinearLayout>
+        </LinearLayout>
 
+    </RelativeLayout>
+    </RelativeLayout>
+</ScrollView>
     <Button
         android:id="@+id/btnShowPosts"
         android:layout_width="match_parent"
@@ -95,5 +105,5 @@
         android:text="SHOW POSTS"
         android:textColor="@color/colorWhite"
         android:textSize="20sp" />
-    </RelativeLayout>
+
 </RelativeLayout>

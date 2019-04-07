@@ -3,13 +3,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activity.ShowPostActivity">
 
+    <TextView
+        android:id="@+id/tvUserTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        android:textSize="@dimen/title_text_size"
+        android:textStyle="bold"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorWhite"
+        android:padding="@dimen/iv_padding"
+        android:layout_centerHorizontal="true"
+        app:fontFamily="sans-serif-light" />
+    <ProgressBar
+        android:id="@+id/pb_post_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/tvUserTitle"/>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvPostList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/recycler_padding"
+        android:layout_below="@id/tvUserTitle"
         android:scrollbars="vertical" />
 
 </RelativeLayout>

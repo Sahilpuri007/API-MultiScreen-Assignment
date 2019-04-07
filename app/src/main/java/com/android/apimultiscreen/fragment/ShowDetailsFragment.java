@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.apimultiscreen.R;
+import com.android.apimultiscreen.activity.HomeActivity;
 import com.android.apimultiscreen.activity.ShowPostActivity;
 import com.android.apimultiscreen.adapter.PostListAdapter;
 import com.android.apimultiscreen.adapter.UserListAdapter;
@@ -36,6 +37,7 @@ public class ShowDetailsFragment extends Fragment {
     private TextView tvId, tvName, tvUserName, tvEmail;
     private Button btnShowPost;
     private int userIdToFetchPost;
+    private String userNameToFetchPost;
     private RelativeLayout rlNoUSer;
     @Nullable
     @Override
@@ -55,52 +57,32 @@ public class ShowDetailsFragment extends Fragment {
         btnShowPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fetchPost(userIdToFetchPost);
+                Log.d("test", "On Click:"+userIdToFetchPost + userNameToFetchPost);
+                Intent intent = new Intent(getContext(), ShowPostActivity.class);
+                intent.putExtra("Name",userNameToFetchPost);
+                intent.putExtra("Id",userIdToFetchPost);
+                startActivity(intent);
             }
         });
 
         return view;
     }
 
-    private void fetchPost(int userId) {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(UsersApi.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        UsersApi usersApi= retrofit.create(UsersApi.class);
 
-        Log.d("POST OF USER"," "+ userIdToFetchPost);
-        Call<ArrayList<Post>> call = usersApi.getPost(userIdToFetchPost);
-
-        call.enqueue(new Callback<ArrayList<Post>>() {
-            @Override
-            public void onResponse(Call<ArrayList<Post>> call, Response<ArrayList<Post>> response) {
-                ArrayList<Post> fetchedPostArrayList = response.body();
-                for (int i=0;i<fetchedPostArrayList.size();i++) {
-                    Log.d("POST", "onResponse: " +fetchedPostArrayList.get(i).getId()+" "+fetchedPostArrayList.get(i).getTitle());
-                }
-                Intent intent = new Intent(getContext(), ShowPostActivity.class);
-                intent.putParcelableArrayListExtra("postArrayList",fetchedPostArrayList);
-                startActivity(intent);
-
-            }
-
-            @Override
-            public void onFailure(Call<ArrayList<Post>> call, Throwable t) {
-                Log.d("POST", "onFailure: "+t.toString());
-
-            }
-        });
-    }
-
-
+    /**
+     * method to set details to fragment
+     * @param user user details
+     */
     public void setDetails(User user) {
 
             userIdToFetchPost = user.getId();
+            userNameToFetchPost = user.getName();
             tvId.setText(String.valueOf(user.getId()));
             tvName.setText(user.getName());
             tvUserName.setText(user.getUserName());
             tvEmail.setText(user.getEmail());
+
+            Log.d("test", "setDetails:"+userIdToFetchPost + userNameToFetchPost);
             btnShowPost.setVisibility(View.VISIBLE);
             rlNoUSer.setVisibility(View.INVISIBLE);
 
