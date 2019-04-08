@@ -22,6 +22,7 @@ import com.android.apimultiscreen.adapter.UserListAdapter;
 import com.android.apimultiscreen.callback.UsersApi;
 import com.android.apimultiscreen.model.Post;
 import com.android.apimultiscreen.model.User;
+import com.android.apimultiscreen.util.Constant;
 
 import java.util.ArrayList;
 
@@ -59,8 +60,8 @@ public class ShowDetailsFragment extends Fragment {
             public void onClick(View v) {
                 Log.d("test", "On Click:"+userIdToFetchPost + userNameToFetchPost);
                 Intent intent = new Intent(getContext(), ShowPostActivity.class);
-                intent.putExtra("Name",userNameToFetchPost);
-                intent.putExtra("Id",userIdToFetchPost);
+                intent.putExtra(Constant.EXTRA_USER_NAME,userNameToFetchPost);
+                intent.putExtra(Constant.EXTRA_USER_ID,userIdToFetchPost);
                 startActivity(intent);
             }
         });
